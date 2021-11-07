@@ -13,6 +13,7 @@ BuildRequires:  pyproject-rpm-macros
 
 # For check
 BuildRequires:  pytest
+BuildRequires:  python3dist(pytest-xdist)
 
 
 %description
