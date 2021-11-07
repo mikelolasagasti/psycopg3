@@ -10,6 +10,7 @@ BuildArch:      noarch
 
 BuildRequires:  python3-devel
 BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python3-setuptools_scm_git_archive
 
 # For check
 BuildRequires:  pytest
