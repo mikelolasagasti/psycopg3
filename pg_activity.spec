@@ -17,6 +17,7 @@ BuildRequires:  pyproject-rpm-macros
 BuildRequires:  pytest
 BuildRequires:  python3dist(pytest-postgresql)
 BuildRequires:  python3dist(psycopg2)
+BuildRequires:  python3dist(psycopg)
 BuildRequires:  libpq-devel
 BuildRequires:  postgresql-server
 
