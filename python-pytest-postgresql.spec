@@ -17,7 +17,7 @@ BuildRequires:  pyproject-rpm-macros
 # for check
 BuildRequires:  libpq-devel
 BuildRequires:  postgresql-server
-BuildRequires:  python3-psycopg2
+BuildRequires:  python3-psycopg
 BuildRequires:  glibc-langpack-en
 BuildRequires:  glibc-langpack-de
 
