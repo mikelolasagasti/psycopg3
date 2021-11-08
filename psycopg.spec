@@ -12,11 +12,10 @@ BuildRequires:  python3-devel
 BuildRequires:  pyproject-rpm-macros
 
 # For check
-BuildRequires:  pytest
+BuildRequires:  pkgconfig(libpq)
+BuildRequires:  postgresql-test-rpm-macros
 BuildRequires:  python3dist(pytest-xdist)
-BuildRequires:  libpq-devel
-BuildRequires:  postgresql-server
-
+BuildRequires:  pytest
 
 %description
 Google Drive API Python wrapper library. Maintained fork of PyDrive.
@@ -46,6 +45,11 @@ patterns in software development and deployment.
 %pyproject_save_files psycopg
 
 %check
+export PGTESTS_LOCALE=C.UTF-8
+%postgresql_tests_run
+
+export PSYCOPG_TEST_DSN="host=$PGHOST port=$PGPORT dbname=${PGTESTS_DATABASES##*:}"
+cd ..
 %pytest
 
 %files -n python3-%{name} -f %{pyproject_files}
