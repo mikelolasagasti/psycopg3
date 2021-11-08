@@ -33,6 +33,7 @@ patterns in software development and deployment.
 
 %prep
 %autosetup -n psycopg-%{version}/psycopg
+sed -i setup.py -e 's/"pytest-asyncio ~= 0.15.1",/"pytest-asyncio >= 0.15.1, <0.17.0",/'
 
 %generate_buildrequires
 %pyproject_buildrequires -r -x test
