@@ -50,11 +50,11 @@ export PGTESTS_LOCALE=C.UTF-8
 
 export PSYCOPG_TEST_DSN="host=$PGHOST port=$PGPORT dbname=${PGTESTS_DATABASES##*:}"
 cd ..
-%pytest
+%pytest -k 'not test_typing'
 
 %files -n python3-%{name} -f %{pyproject_files}
 %doc README.rst
-%license LICENSE
+%license LICENSE.txt
 
 %changelog
 * Sat Nov 06 2021 Mikel Olasagasti Uranga <mikel@olasagasti.info> - 3.0.1-1
