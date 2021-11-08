@@ -6,7 +6,7 @@
 %bcond_without  tests
 
 Name:           python3-%{pypi_name}
-Version:        0.15.1
+Version:        0.16.0
 Release:        5%{?dist}
 Summary:        Pytest support for asyncio
 
