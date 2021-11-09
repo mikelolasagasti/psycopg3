@@ -39,7 +39,7 @@ sed -i setup.py -e 's/"pytest-asyncio ~= 0.15.1",/"pytest-asyncio >= 0.15.1, <0.
 # disable remove deps for typechecking and linting
 sed -r -i 's/("(mypy|black|flake8|pytest-mypy)\b.*",)/# \1/' setup.py
 
-# pproxy
+# remove pproxy dep, only used in tests
 sed -r -i 's/("(pproxy)\b.*",)/# \1/' setup.py
 
 %generate_buildrequires
