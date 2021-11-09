@@ -33,7 +33,14 @@ patterns in software development and deployment.
 
 %prep
 %autosetup -n psycopg-%{version}/psycopg
+# works fine with latest pytest-asyncio
+# https://github.com/psycopg/psycopg/pull/143
 sed -i setup.py -e 's/"pytest-asyncio ~= 0.15.1",/"pytest-asyncio >= 0.15.1, <0.17.0",/'
+# disable remove deps for typechecking and linting
+sed -r -i 's/("(mypy|black|flake8|pytest-mypy)\b.*",)/# \1/' setup.py
+
+# pproxy
+sed -r -i 's/("(pproxy)\b.*",)/# \1/' setup.py
 
 %generate_buildrequires
 %pyproject_buildrequires -r -x test
@@ -51,12 +58,12 @@ export PGTESTS_LOCALE=C.UTF-8
 
 export PSYCOPG_TEST_DSN="host=$PGHOST port=$PGPORT dbname=${PGTESTS_DATABASES##*:}"
 cd ..
-%pytest -k 'not test_typing'
+%pytest -k 'not test_typing and not test_version'
 
 %files -n python3-%{name} -f %{pyproject_files}
 %doc README.rst
 %license LICENSE.txt
 
 %changelog
-* Sat Nov 06 2021 Mikel Olasagasti Uranga <mikel@olasagasti.info> - 3.0.1-1
+* Sat Nov 06 2021 Mikel Olasagasti Uranga <mikel@olasagasti.info> - 3.0.2-1
 - Initial package
