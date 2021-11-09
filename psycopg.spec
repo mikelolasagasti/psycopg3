@@ -1,5 +1,5 @@
 Name:           psycopg
-Version:        3.0.1
+Version:        3.0.2
 Release:        1%{?dist}
 Summary:        New implementation of the most used, reliable and feature-rich PostgreSQL adapter for Python
 
